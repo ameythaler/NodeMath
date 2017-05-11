@@ -4,9 +4,12 @@ class BasicNode {
     this.size = new Point(100, 40);
     this.inLinks = inLinks;
     this.outLinks = outLinks;
+    this.fillColor = 'rgb(255, 255, 255)';
+    this.bodyShape = new Path2D();
+    this.bodyShape.rect(10, 10, 50, 50);
   }
 
-  function draw(context) {
-
+  draw(context) {
+    context.fill(this.bodyShape);
   }
 }
