@@ -43,12 +43,17 @@ class Link {
 }
 
 const CORNER_RADIUS = 5;
+const LINK_SIZE_X = 10;
+const LINK_SIZE_Y = 10;
+const LINK_SPACE = 5;
+const MIN_NODE_X = 100;
+const MIN_NODE_Y = 50;
 
 class BasicNode {
   constructor(inLinks, outLinks) {
     this.location = new Point(200, 200);
     //this.location.x = 200;
-    this.size = new Point(100, 40);
+    this.size = new Point(MIN_NODE_X, MIN_NODE_Y);
     this.inLinks = inLinks;
     this.outLinks = outLinks;
     this.fillColor = 'rgb(0, 0, 200)';
