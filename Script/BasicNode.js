@@ -7,7 +7,7 @@ class BasicNode {
     this.size = new Point(100, 40);
     this.inLinks = inLinks;
     this.outLinks = outLinks;
-    this.fillColor = 'rgb(0, 200, 0)';
+    this.fillColor = 'rgb(0, 0, 200)';
     this.strokeColor = 'rgb(0, 0, 0)';
     this.bodyShape = new Path2D();
     this.bodyShape.rect(this.location.x - this.size.x / 2
@@ -45,6 +45,19 @@ class BasicNode {
       , CORNER_RADIUS, Math.PI * 1.5, Math.PI * 2);
     this.outlineShape.lineTo(this.location.x + this.size.x / 2
       , this.location.y + this.size.y / 2 - CORNER_RADIUS);
+    this.outlineShape.arc(this.location.x + this.size.x / 2 - CORNER_RADIUS
+      , this.location.y + this.size.y / 2 - CORNER_RADIUS
+      , CORNER_RADIUS, 0, Math.PI * 0.5);
+    this.outlineShape.lineTo(this.location.x - this.size.x / 2 + CORNER_RADIUS
+      , this.location.y + this.size.y / 2);
+    this.outlineShape.arc(this.location.x - this.size.x / 2 + CORNER_RADIUS
+      , this.location.y + this.size.y / 2 - CORNER_RADIUS
+      , CORNER_RADIUS, Math.PI * 0.5, Math.PI);
+    this.outlineShape.lineTo(this.location.x - this.size.x / 2
+      , this.location.y - this.size.y / 2 + CORNER_RADIUS);
+    this.outlineShape.arc(this.location.x - this.size.x / 2 + CORNER_RADIUS
+      , this.location.y - this.size.y / 2 + CORNER_RADIUS
+      , CORNER_RADIUS, Math.PI, Math.PI * 1.5);
   }
 
   draw(context) {
