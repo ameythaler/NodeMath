@@ -1,25 +1,30 @@
+const LINK_SIZE_X = 10;
+const LINK_SIZE_Y = 10;
+
 class Link {
-  constructor(isInLink, location, size) {
+  constructor(location, parent) {
+    this.parent = parent;
     this.connector = null;
-    this.isInLink = isInLink;
     this.location = location;
-    this.size = size;
-    
+    this.fillColor = 'rgb(0, 255, 0)';
+
     this.bodyShape = new Path2D();
-    
-    if(isInLink) {
-      this.bodyShape.moveTo(this.location.x - this.size.x / 2
-        , this.location.y - this.size.y / 2);
-      this.bodyShape.lineTo(this.location.x, this.location.y - this.size.y / 2);
-      this.bodyShape.lineTo(this.location.x + this.size.x / 2, this.location.y);
-      this.bodyShape.lineTo(this.location.x, this.location.y + this.size.y / 2);
-      this.bodyShape.lineTo(this.location.x - this.size.x / 2
-        , this.location.y + this.size.y / 2);
-      this.bodySahpe.closePath();
-    }
+
+    this.bodyShape.moveTo(-LINK_SIZE_X / 2
+      , -LINK_SIZE_Y / 2);
+    this.bodyShape.lineTo(0, -LINK_SIZE_Y / 2);
+    this.bodyShape.lineTo(LINK_SIZE_X / 2, 0);
+    this.bodyShape.lineTo(0, LINK_SIZE_Y / 2);
+    this.bodyShape.lineTo(-LINK_SIZE_X / 2
+      , LINK_SIZE_Y / 2);
+    this.bodyShape.closePath();
   }
-  
+
   draw(context) {
+    context.save();
+    context.translate(this.location.x, this.location.y);
+    context.fillStyle = this.fillColor;
     context.fill(this.bodyShape);
+    context.restore();
   }
 }
